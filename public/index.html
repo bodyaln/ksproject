@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111820">
+  <title>KINO — Výber vstupeniek</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/" aria-label="KINO domov"><span class="brand-mark">K</span>KINO<span class="brand-dot">.</span></a><span class="project-tag">KSS / TÉMA 16</span></header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">DOBRÝ FILM ZAČÍNA DOBRÝM MIESTOM</p><h1>Vyberte si svoj večer.</h1><p class="muted">Predstavenie, miesto, vstupenka. Všetko na jednom mieste.</p></div><div class="step-pill"><b>01</b> Výber vstupeniek <span>→</span> Súhrn</div></div>
+    <div id="mode-banner" class="banner" hidden></div>
+    <p class="demo-note">Ukážkový program: 21. – 23. 10. 2026 · Výber miest sa potvrdí rezerváciou bez platby.</p>
+    <div id="notice" class="notice" role="alert" hidden></div>
+    <div class="layout">
+      <div class="content">
+        <section class="panel" aria-labelledby="program-title">
+          <div class="section-heading"><h2 id="program-title"><span class="number">1</span> Kedy ideme do kina?</h2><span class="subtle">Program</span></div>
+          <div class="filters"><label>Dátum<input type="date" id="date" min="2026-10-21" max="2026-10-23" value="2026-10-21"></label><label>Čas<select id="time"><option value="all">Všetky časy</option><option value="afternoon">Do 18:00</option><option value="evening">Od 18:00</option></select></label><label>Sála<select id="hall"><option value="all">Všetky sály</option><option>Sála 1</option><option>Sála 2</option></select></label></div>
+          <div id="sessions" class="sessions" aria-label="Dostupné predstavenia"></div>
+        </section>
+        <section class="panel seat-panel" aria-labelledby="seat-title">
+          <div class="section-heading"><h2 id="seat-title"><span class="number">2</span> Kde chcete sedieť?</h2><button id="refresh" class="text-button" type="button">↻ Obnoviť obsadenosť</button></div>
+          <div class="legend"><span><i class="key standard"></i>Štandard · 10 €</span><span><i class="key vip"></i>VIP · 15 €</span><span><i class="key selected"></i>Váš výber</span><span><i class="key occupied"></i>Obsadené</span></div>
+          <div class="screen-wrap"><div class="screen"></div><span>PLÁTNO</span></div>
+          <div id="seats" class="seat-map" role="group" aria-label="Sedadlá v sále"></div>
+          <p class="seat-help">Rady A–D: Štandard &nbsp; / &nbsp; Rady E–F: VIP<br>Vyberte 1 až 6 miest. Opätovným kliknutím miesto zrušíte.</p>
+        </section>
+      </div>
+      <aside class="panel summary" aria-labelledby="summary-title">
+        <p class="eyebrow">VAŠA REZERVÁCIA</p><h2 id="summary-title">Už len kúsok k filmu.</h2><p id="session-summary" class="muted">Načítavam program…</p><div class="divider"></div>
+        <div class="summary-label"><h3>Vstupenky</h3><span id="count">0 / 6</span></div>
+        <p class="discount-note">Dospelý · plná cena<br>Študent · −20 % &nbsp; Dieťa · −30 %</p>
+        <div id="tickets" class="tickets"></div>
+        <div class="total-row"><span>Spolu</span><strong id="total" aria-live="polite">0,00 €</strong></div>
+        <p class="tax-note">Konečná cena · bez ďalších poplatkov</p>
+        <button id="reserve" class="primary" type="button">Potvrdiť výber <span>→</span></button>
+        <p class="footer-note">Rezervácia bez platby. Zľavy sa vzťahujú na cenu zvolenej zóny.</p>
+        <div id="confirmation" class="confirmation" role="status" hidden></div>
+        <button id="new-selection" class="text-button new-selection" type="button" hidden>Začať nový výber</button>
+      </aside>
+    </div>
+    <footer>Študentský projekt · Kvalita softvérových systémov <span id="build">v1.0.0</span></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "kino-tema16",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "KINO – výber predstavenia, sedadiel a výpočet vstupného",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "start:bug": "node server.js --demo-vip-bug"
+  }
+}
