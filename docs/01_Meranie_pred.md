@@ -1,6 +1,6 @@
 # Meranie východiskového stavu (PRED)
 
-**ID:** MER-PRED · **Dátum:** 17. 11. 2026 · **Autor:** Bc. Bohdan Lynnyk, I-API · **Build:** KINO 1.0.0 (tag `v1.0-pred`)
+**ID:** MER-PRED · **Dátum:** 17. 11. 2026 · **Autor:** Bc. Bohdan Lynnyk, I-API · **Build:** KINO 1.0.0 (kód tag `v1.0-pred`, meranie tag `v1.0-meranie-pred`)
 
 ## Účel
 

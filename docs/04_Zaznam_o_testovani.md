@@ -63,11 +63,11 @@ Aby bolo zrejmé, že UI prípady chybu naozaj odhalia, ten istý skript bol spu
 | TC-07 | Spolu | 28,50 € | **25,00 €** |
 | TC-18 | text potvrdenia | Spolu 20,50 € | **Spolu 17,00 €** |
 
-Ostatných 7 prípadov prešlo, čo zodpovedá tomu, že chyba sa týka iba kombinácie VIP + dieťa. Demo režim je podľa plánu testov mimo rozsahu, preto sa incident nezakladá; beh slúži iba ako dôkaz citlivosti testov. Rovnakú chybu odhalí aj automatický TC-05 (overené pri tvorbe automatických testov zapnutím `demoVipBug`).
+Ostatných 7 prípadov prešlo, čo zodpovedá tomu, že chyba sa týka iba kombinácie VIP + dieťa. Odchýlka je zapísaná ako incident INC-001 (`07_Sprava_o_incidente_INC-001.md`) a uzavretá ako mimo rozsahu, lebo demo režim podľa plánu testov nie je prijímaná verzia. Rovnakú chybu odhalí aj automatický TC-05 (overené pri tvorbe automatických testov zapnutím `demoVipBug`).
 
 ## 5. Incidenty
 
-Počas RUN-01 až RUN-05 nebol zaznamenaný žiadny FAIL, preto nebol založený žiadny incident. Kritérium K2 (0 otvorených incidentov P1) je splnené.
+Počas RUN-01 až RUN-05 (prijímaná verzia) nebol zaznamenaný žiadny FAIL. Kontrolný beh RUN-06 v demo režime vytvoril incident INC-001, ktorý bol uzavretý ako mimo rozsahu. Kritérium K2 (0 otvorených incidentov P1) je splnené.
 
 ## 6. Stav po vykonaní
 

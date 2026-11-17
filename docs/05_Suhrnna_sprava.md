@@ -8,13 +8,13 @@
 | **Autor** | Bc. Bohdan Lynnyk, I-API |
 | **Nadradené dokumenty** | Plán testov LTP-KINO-001 v1.1, Opis testov LTD-KINO-001 v1.1, Záznam o testovaní LOG-KINO-001 |
 | **Štandard** | IEEE 829-2008: Súhrnná správa o testovaní (*Level Test Report*) |
-| **Testovaná verzia** | KINO 1.0.0, kód nezmenený od tagu `v1.0-pred`; testy a dokumentácia: commit `86bd458` |
+| **Testovaná verzia** | KINO 1.0.0, kód nezmenený od tagu `v1.0-pred`; stav PRED: tag `v1.0-meranie-pred`; stav PO: tag `v1.1-po` |
 
 ---
 
 ## 1. Zhrnutie
 
-Modul KINO **spĺňa všetky kritériá prijatia K1 – K5** z plánu testov. Všetkých 21 testovacích prípadov prešlo, každá z 12 požiadaviek je overená a nebol zistený žiadny incident.
+Modul KINO **spĺňa všetky kritériá prijatia K1 – K5** z plánu testov. Všetkých 21 testovacích prípadov prešlo, každá z 12 požiadaviek je overená a v prijímanej verzii nebol zistený žiadny incident. Jediný incident INC-001 vznikol v kontrolnom behu v demo režime a bol uzavretý ako mimo rozsahu.
 
 Hlavný prínos projektu nie je samotný výsledok PASS, ale **merateľný rozdiel oproti stavu bez plánu**. Pôvodné tri „naivné" testy tiež prechádzali a pokrývali 100 % riadkov `domain.js`, no zabili iba 35,74 % mutantov a úplne neoverili ani jednu požiadavku. Po zavedení postupu podľa IEEE 829 a dvoch cykloch testovania je mutačné skóre 89,96 % a overených je 12 z 12 požiadaviek.
 
@@ -63,7 +63,7 @@ Spolu: 21 TC (16 × P1, 5 × P2), 21 PASS, 0 FAIL, 0 BLOCKED, 0 NOT_RUN. Výsled
 | # | Kritérium | Cieľ | Výsledok | Splnené |
 |---|---|---|---|---|
 | K1 | TC priority P1 s výsledkom PASS | 100 % | 16 / 16 = 100 % | áno |
-| K2 | Otvorené incidenty P1 | 0 | 0 | áno |
+| K2 | Otvorené incidenty P1 | 0 | 0 (INC-001 uzavretý, mimo rozsahu) | áno |
 | K3 | Požiadavky overené aspoň jedným PASS | 12 / 12 | 12 / 12 | áno |
 | K4 | Mutačné skóre | ≥ 75 % | 89,96 % | áno (v 2. cykle) |
 | K5 | Pokrytie vetiev `domain.js` | ≥ 90 % | 92,31 % | áno (v 2. cykle) |
@@ -92,7 +92,7 @@ Bez demo režimu a nedosiahnuteľnej obsluhy chyby 500 (13 mutantov) je skóre 2
 | O2 | **REQ-12 spresnená** o nepodporovanú metódu a cestu | analýza mutantov ukázala správanie, ktoré požiadavka nepopisovala | požiadavky v1.1; zmena je zapísaná v histórii a v komentári k issue REQ-12 |
 | O3 | **UI prípady vykonané skriptom** v Chromiu (Playwright), nie ručne v Chrome | prehliadač na počítači autora nemal prístup k serveru v pracovnom prostredí; skript je navyše opakovateľný | kroky a očakávané hodnoty sú totožné s kartami; skript nehodnotí vizuálny dojem, ten bol skontrolovaný na snímkach |
 | O4 | **Harmonogram** v pláne (28. 10. – 19. 11.) nezodpovedá skutočnému priebehu | práce prebehli 16. – 17. 11. 2026 (história commitov, kap. 2.5) | poradie krokov (požiadavky → meranie PRED → plán → opis → vykonanie → meranie PO) bolo dodržané |
-| O5 | Bez incidentov, takže **životný cyklus incidentu** (plán 3.6) nebol v praxi použitý | žiadny TC nezlyhal | citlivosť testov bola overená kontrolnými behmi so zámernou chybou (kap. 2.6) |
+| O5 | **Životný cyklus incidentu** (plán 3.6) bol použitý iba pre INC-001 z kontrolného behu v demo režime | v prijímanej verzii žiadny TC nezlyhal | INC-001 prešiel stavmi Open → Closed bez opravy; stavy In Progress a Ready for Retest sa v praxi neoverili |
 
 ### 2.5 Súhrn činností
 
@@ -105,7 +105,7 @@ Bez demo režimu a nedosiahnuteľnej obsluhy chyby 500 (13 mutantov) je skóre 2
 | 17. 11. 14:26 | `a33834f` | 2. cyklus: analýza mutantov, TC-21, meranie PO 2 |
 | 17. 11. 14:38 | `86bd458` | UI prípady (PR-02), záznam o testovaní |
 
-Rozsah vytvoreného testovacieho kódu: 582 riadkov v `tests/` (pôvodne 38). Beh `npm test` trvá približne 0,3 s, mutačné testovanie približne 1 minútu, UI prípady približne 30 s.
+Rozsah vytvoreného testovacieho kódu: 582 riadkov v `tests/` (pôvodne 38). Beh `npm test` trvá približne 0,3 s, mutačné testovanie približne 1 minútu, 9 UI prípadov približne 5 s.
 
 ### 2.6 Overenie citlivosti testov
 
@@ -135,7 +135,7 @@ Mutačné testovanie (Stryker) robí to isté systematicky pre 249 automaticky v
 
 | Náklad / slabina | Poznámka |
 |---|---|
-| Rozsah dokumentácie | pre modul s ~250 riadkami logiky vzniklo 5 dokumentov; plán bolo nutné prispôsobiť a zlúčiť sekcie |
+| Rozsah dokumentácie | pre modul s približne 310 riadkami kódu vzniklo 6 dokumentov; plán bolo nutné prispôsobiť a zlúčiť sekcie |
 | Zastaraná norma | IEEE 829-2008 bola nahradená ISO/IEC/IEEE 29119-3; štruktúra dokumentov je takmer rovnaká, preto prechod nie je náročný |
 | Norma nehovorí *ako dobre* testovať | kvalitu testov neodhalí formulár, ale meranie (mutačné skóre, kontrolné behy) |
 
@@ -160,7 +160,7 @@ Mutačné testovanie (Stryker) robí to isté systematicky pre 249 automaticky v
 3. **Spresnenie REQ-12 počas testovania** (O2) je metodicky citlivé. Bolo zapísané otvorene a týka sa správania, ktoré už kód mal; nejde o zmenu očakávania, aby test prešiel.
 4. **Prehliadače.** UI bolo overené v Chromiu, nie v Safari ani Firefoxe (plán, riziko R6).
 5. **Súbeh (TC-15, TC-16)** je overený pre jeden proces Node.js. Pri viacerých inštanciách servera alebo databáze by bol potrebný iný mechanizmus zámku a nové testy.
-6. **Bez incidentov** nebol overený celý proces riadenia incidentov v praxi; citlivosť testov preukazujú iba kontrolné behy.
+6. **Incidenty:** jediný incident INC-001 pochádza z demo režimu, celý cyklus oprava → retest sa v praxi neoveril; citlivosť testov preukazujú kontrolné behy.
 7. **Metriky závisia od konfigurácie.** Mutačné skóre je počítané pre `domain.js` a `server.js` r. 1 – 74; UI (`public/app.js`) do neho nevstupuje.
 
 ---
