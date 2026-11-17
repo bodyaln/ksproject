@@ -21,6 +21,7 @@ describe('TC-04 Hranica zón D8 / E1 (REQ-03)', () => {
     assert.equal(SEATS.at(-1).id, 'F8');
     for (const seat of SEATS) {
       assert.equal(seat.zone, 'ABCD'.includes(seat.row) ? 'standard' : 'vip', seat.id);
+      assert.equal(seat.id, `${seat.row}${seat.number}`, 'číslo miesta zodpovedá ID');
     }
   });
 });

@@ -3,7 +3,7 @@
 | Položka | Hodnota |
 |---|---|
 | **Identifikátor** | LTP-KINO-001 |
-| **Verzia** | 1.0 |
+| **Verzia** | 1.1 |
 | **Dátum** | 17. 11. 2026 |
 | **Autor** | Bc. Bohdan Lynnyk, I-API |
 | **Stav** | Schválený autorom, pripravený na vykonanie |
@@ -110,9 +110,9 @@ Každá požiadavka má aspoň jeden testovací prípad (TC). Testovacie prípad
 | REQ-09 | TC-13 Zmena predstavenia vymaže výber · TC-14 Odstránenie miesta tlačidlom × | stavové prechody | UI |
 | REQ-10 | TC-15 Dvaja klienti, rovnaké miesto · TC-16 Konflikt nerezervuje zvyšok košíka | scenár, stavové prechody | API |
 | REQ-11 | TC-17 Odpoveď potvrdenia (ID, suma, stav) · TC-18 Potvrdený výber je nemenný | stavové prechody, scenár | API, UI |
-| REQ-12 | TC-19 Neexistujúce predstavenie, sedadlo, kategória · TC-20 Duplicita, neplatný JSON, telo nad 16 kB | triedy ekvivalencie (neplatné) | jednotková, API |
+| REQ-12 | TC-19 Neexistujúce predstavenie, sedadlo, kategória · TC-20 Duplicita, neplatný JSON, telo nad 16 kB · TC-21 Nepodporovaná metóda a cesta | triedy ekvivalencie (neplatné), hraničné hodnoty | jednotková, API |
 
-**Súhrn:** 12 požiadaviek, 20 testovacích prípadov (11 automatických, 8 manuálnych UI, 1 kombinovaný). Podrobný opis: `docs/03_Opis_testov.md`.
+**Súhrn:** 12 požiadaviek, 21 testovacích prípadov (12 automatických, 8 manuálnych UI, 1 kombinovaný). Podrobný opis: `docs/03_Opis_testov.md`.
 
 ### 2.5 Prístup
 
@@ -306,3 +306,4 @@ Bez licenčných nákladov: Node.js, Stryker, GitHub (verejný repozitár) a Chr
 | Verzia | Dátum | Zmena |
 |---|---|---|
 | 1.0 | 17. 11. 2026 | Prvá verzia plánu po meraní stavu PRED |
+| 1.1 | 17. 11. 2026 | Druhý cyklus: K4 a K5 nesplnené po 1. cykle, doplnený TC-21 a vstupy TC-19, TC-20 |

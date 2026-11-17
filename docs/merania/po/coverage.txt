@@ -1,0 +1,412 @@
+
+> kino-tema16@1.0.0 test:coverage
+> node --test --experimental-test-coverage tests/*.test.js
+
+TAP version 13
+# Subtest: TC-04 Hranica zón D8 / E1 (REQ-03)
+    # Subtest: D8 je posledné miesto zóny Štandard – 1000 centov
+    ok 1 - D8 je posledné miesto zóny Štandard – 1000 centov
+      ---
+      duration_ms: 0.502834
+      type: 'test'
+      ...
+    # Subtest: E1 je prvé miesto zóny VIP – 1500 centov
+    ok 2 - E1 je prvé miesto zóny VIP – 1500 centov
+      ---
+      duration_ms: 0.075292
+      type: 'test'
+      ...
+    # Subtest: sála má 48 miest A1 … F8, rady A–D Štandard, E–F VIP
+    ok 3 - sála má 48 miest A1 … F8, rady A–D Štandard, E–F VIP
+      ---
+      duration_ms: 0.077375
+      type: 'test'
+      ...
+    1..3
+ok 1 - TC-04 Hranica zón D8 / E1 (REQ-03)
+  ---
+  duration_ms: 1.179291
+  type: 'suite'
+  ...
+# Subtest: TC-05 Rozhodovacia tabuľka 6 cien (REQ-04, REQ-05)
+    # Subtest: A1 / adult → 1000 centov
+    ok 1 - A1 / adult → 1000 centov
+      ---
+      duration_ms: 0.091792
+      type: 'test'
+      ...
+    # Subtest: A1 / student → 800 centov
+    ok 2 - A1 / student → 800 centov
+      ---
+      duration_ms: 0.039
+      type: 'test'
+      ...
+    # Subtest: A1 / child → 700 centov
+    ok 3 - A1 / child → 700 centov
+      ---
+      duration_ms: 0.035417
+      type: 'test'
+      ...
+    # Subtest: E1 / adult → 1500 centov
+    ok 4 - E1 / adult → 1500 centov
+      ---
+      duration_ms: 0.038042
+      type: 'test'
+      ...
+    # Subtest: E1 / student → 1200 centov
+    ok 5 - E1 / student → 1200 centov
+      ---
+      duration_ms: 0.033708
+      type: 'test'
+      ...
+    # Subtest: E1 / child → 1050 centov
+    ok 6 - E1 / child → 1050 centov
+      ---
+      duration_ms: 0.032
+      type: 'test'
+      ...
+    1..6
+ok 2 - TC-05 Rozhodovacia tabuľka 6 cien (REQ-04, REQ-05)
+  ---
+  duration_ms: 0.437959
+  type: 'suite'
+  ...
+# Subtest: TC-06 Podvrhnutá cena a zóna (REQ-04, REQ-12)
+ok 3 - TC-06 Podvrhnutá cena a zóna (REQ-04, REQ-12)
+  ---
+  duration_ms: 23.553083
+  type: 'test'
+  ...
+# Subtest: TC-07 Zmiešaný košík 28,50 € – automatická časť (REQ-06)
+ok 4 - TC-07 Zmiešaný košík 28,50 € – automatická časť (REQ-06)
+  ---
+  duration_ms: 5.389459
+  type: 'test'
+  ...
+# Subtest: TC-01 Katalóg obsahuje 9 predstavení (REQ-01)
+ok 5 - TC-01 Katalóg obsahuje 9 predstavení (REQ-01)
+  ---
+  duration_ms: 17.581625
+  type: 'test'
+  ...
+# Subtest: TC-09 Hranice počtu lístkov 0 / 1 / 6 / 7 (REQ-07)
+    # Subtest: jednotkový: 0 lístkov
+    ok 1 - jednotkový: 0 lístkov
+      ---
+      duration_ms: 0.796917
+      type: 'test'
+      ...
+    # Subtest: API: 0 lístkov
+    ok 2 - API: 0 lístkov
+      ---
+      duration_ms: 20.110292
+      type: 'test'
+      ...
+    # Subtest: jednotkový: 1 lístkov
+    ok 3 - jednotkový: 1 lístkov
+      ---
+      duration_ms: 0.165792
+      type: 'test'
+      ...
+    # Subtest: API: 1 lístkov
+    ok 4 - API: 1 lístkov
+      ---
+      duration_ms: 6.263333
+      type: 'test'
+      ...
+    # Subtest: jednotkový: 6 lístkov
+    ok 5 - jednotkový: 6 lístkov
+      ---
+      duration_ms: 0.157292
+      type: 'test'
+      ...
+    # Subtest: API: 6 lístkov
+    ok 6 - API: 6 lístkov
+      ---
+      duration_ms: 1.832375
+      type: 'test'
+      ...
+    # Subtest: jednotkový: 7 lístkov
+    ok 7 - jednotkový: 7 lístkov
+      ---
+      duration_ms: 0.083625
+      type: 'test'
+      ...
+    # Subtest: API: 7 lístkov
+    ok 8 - API: 7 lístkov
+      ---
+      duration_ms: 1.705
+      type: 'test'
+      ...
+    1..8
+ok 6 - TC-09 Hranice počtu lístkov 0 / 1 / 6 / 7 (REQ-07)
+  ---
+  duration_ms: 31.823209
+  type: 'suite'
+  ...
+# Subtest: dospelý lístok v štandardnej zóne stojí 10 EUR
+ok 7 - dospelý lístok v štandardnej zóne stojí 10 EUR
+  ---
+  duration_ms: 0.660083
+  type: 'test'
+  ...
+# Subtest: rezervácia voľného miesta prejde
+ok 8 - rezervácia voľného miesta prejde
+  ---
+  duration_ms: 19.467292
+  type: 'test'
+  ...
+# Subtest: obsadené miesto sa nedá rezervovať
+ok 9 - obsadené miesto sa nedá rezervovať
+  ---
+  duration_ms: 5.097
+  type: 'test'
+  ...
+# Subtest: TC-12 Obsadenosť oddelená medzi predstaveniami (REQ-08)
+ok 10 - TC-12 Obsadenosť oddelená medzi predstaveniami (REQ-08)
+  ---
+  duration_ms: 21.770583
+  type: 'test'
+  ...
+# Subtest: TC-15 Dvaja klienti, rovnaké miesto (REQ-10)
+ok 11 - TC-15 Dvaja klienti, rovnaké miesto (REQ-10)
+  ---
+  duration_ms: 12.361333
+  type: 'test'
+  ...
+# Subtest: TC-16 Konflikt nerezervuje zvyšok košíka (REQ-10)
+ok 12 - TC-16 Konflikt nerezervuje zvyšok košíka (REQ-10)
+  ---
+  duration_ms: 3.6015
+  type: 'test'
+  ...
+# Subtest: TC-17 Odpoveď potvrdenia (REQ-11)
+ok 13 - TC-17 Odpoveď potvrdenia (REQ-11)
+  ---
+  duration_ms: 3.799958
+  type: 'test'
+  ...
+# Subtest: TC-21 Nepodporovaná metóda a cesta, hlavičky odpovedí (REQ-12)
+    # Subtest: a) GET /api/reservations → 404 NOT_FOUND
+    ok 1 - a) GET /api/reservations → 404 NOT_FOUND
+      ---
+      duration_ms: 18.175542
+      type: 'test'
+      ...
+    # Subtest: b) GET /api/quote → 404 NOT_FOUND
+    ok 2 - b) GET /api/quote → 404 NOT_FOUND
+      ---
+      duration_ms: 4.732416
+      type: 'test'
+      ...
+    # Subtest: c) POST /api/catalog → 404 NOT_FOUND
+    ok 3 - c) POST /api/catalog → 404 NOT_FOUND
+      ---
+      duration_ms: 6.801625
+      type: 'test'
+      ...
+    # Subtest: d) POST /api/seats/s0-1 → 404 NOT_FOUND
+    ok 4 - d) POST /api/seats/s0-1 → 404 NOT_FOUND
+      ---
+      duration_ms: 2.385833
+      type: 'test'
+      ...
+    # Subtest: e) DELETE /api/reservations → 404 NOT_FOUND
+    ok 5 - e) DELETE /api/reservations → 404 NOT_FOUND
+      ---
+      duration_ms: 1.7745
+      type: 'test'
+      ...
+    # Subtest: f) GET /neexistuje → 404 NOT_FOUND
+    ok 6 - f) GET /neexistuje → 404 NOT_FOUND
+      ---
+      duration_ms: 1.232125
+      type: 'test'
+      ...
+    # Subtest: g) POST / (stránka) → 404 NOT_FOUND
+    ok 7 - g) POST / (stránka) → 404 NOT_FOUND
+      ---
+      duration_ms: 1.309542
+      type: 'test'
+      ...
+    # Subtest: h) GET /api/catalog/x → 404 NOT_FOUND
+    ok 8 - h) GET /api/catalog/x → 404 NOT_FOUND
+      ---
+      duration_ms: 2.278459
+      type: 'test'
+      ...
+    # Subtest: i) POST na nepodporovanú cestu nič nerezervuje
+    ok 9 - i) POST na nepodporovanú cestu nič nerezervuje
+      ---
+      duration_ms: 4.605208
+      type: 'test'
+      ...
+    # Subtest: j) POST /api/quote iba počíta, nerezervuje
+    ok 10 - j) POST /api/quote iba počíta, nerezervuje
+      ---
+      duration_ms: 2.634292
+      type: 'test'
+      ...
+    # Subtest: k) odpoveď API: JSON, Cache-Control no-store
+    ok 11 - k) odpoveď API: JSON, Cache-Control no-store
+      ---
+      duration_ms: 1.223458
+      type: 'test'
+      ...
+    # Subtest: l) GET / → 200 text/html
+    ok 12 - l) GET / → 200 text/html
+      ---
+      duration_ms: 8.823708
+      type: 'test'
+      ...
+    # Subtest: l) GET /styles.css → 200 text/css
+    ok 13 - l) GET /styles.css → 200 text/css
+      ---
+      duration_ms: 6.297416
+      type: 'test'
+      ...
+    # Subtest: l) GET /app.js → 200 text/javascript
+    ok 14 - l) GET /app.js → 200 text/javascript
+      ---
+      duration_ms: 1.810208
+      type: 'test'
+      ...
+    1..14
+ok 14 - TC-21 Nepodporovaná metóda a cesta, hlavičky odpovedí (REQ-12)
+  ---
+  duration_ms: 65.030666
+  type: 'suite'
+  ...
+# Subtest: TC-19 Neexistujúce predstavenie, sedadlo, kategória (REQ-12)
+    # Subtest: jednotkový: neplatné hodnoty vyhodia DomainError
+    ok 1 - jednotkový: neplatné hodnoty vyhodia DomainError
+      ---
+      duration_ms: 0.891042
+      type: 'test'
+      ...
+    # Subtest: API: a) sessionId s9-9
+    ok 2 - API: a) sessionId s9-9
+      ---
+      duration_ms: 23.066375
+      type: 'test'
+      ...
+    # Subtest: API: b) seatId Z9
+    ok 3 - API: b) seatId Z9
+      ---
+      duration_ms: 5.051375
+      type: 'test'
+      ...
+    # Subtest: API: c) type senior
+    ok 4 - API: c) type senior
+      ---
+      duration_ms: 2.390667
+      type: 'test'
+      ...
+    # Subtest: API: e) vstupenka null
+    ok 5 - API: e) vstupenka null
+      ---
+      duration_ms: 2.782125
+      type: 'test'
+      ...
+    # Subtest: API: d) GET /api/seats/s9-9 → 404
+    ok 6 - API: d) GET /api/seats/s9-9 → 404
+      ---
+      duration_ms: 1.219375
+      type: 'test'
+      ...
+    1..6
+ok 15 - TC-19 Neexistujúce predstavenie, sedadlo, kategória (REQ-12)
+  ---
+  duration_ms: 36.088167
+  type: 'suite'
+  ...
+# Subtest: TC-20 Duplicita, neplatný JSON, veľké telo (REQ-12)
+    # Subtest: a) A1 dvakrát
+    ok 1 - a) A1 dvakrát
+      ---
+      duration_ms: 3.085875
+      type: 'test'
+      ...
+    # Subtest: b) neplatný JSON
+    ok 2 - b) neplatný JSON
+      ---
+      duration_ms: 3.046083
+      type: 'test'
+      ...
+    # Subtest: c) telo > 16 384 B
+    ok 3 - c) telo > 16 384 B
+      ---
+      duration_ms: 1.958958
+      type: 'test'
+      ...
+    # Subtest: d) tickets nie je pole
+    ok 4 - d) tickets nie je pole
+      ---
+      duration_ms: 1.876375
+      type: 'test'
+      ...
+    # Subtest: e) telo presne 16 385 B
+    ok 5 - e) telo presne 16 385 B
+      ---
+      duration_ms: 1.934791
+      type: 'test'
+      ...
+    # Subtest: f) telo je pole []
+    ok 6 - f) telo je pole []
+      ---
+      duration_ms: 1.869209
+      type: 'test'
+      ...
+    # Subtest: g) telo je null
+    ok 7 - g) telo je null
+      ---
+      duration_ms: 2.078166
+      type: 'test'
+      ...
+    # Subtest: h) telo je číslo
+    ok 8 - h) telo je číslo
+      ---
+      duration_ms: 2.1375
+      type: 'test'
+      ...
+    # Subtest: i) telo presne 16 384 B je ešte prijaté
+    ok 9 - i) telo presne 16 384 B je ešte prijaté
+      ---
+      duration_ms: 1.852875
+      type: 'test'
+      ...
+    1..9
+ok 16 - TC-20 Duplicita, neplatný JSON, veľké telo (REQ-12)
+  ---
+  duration_ms: 20.1315
+  type: 'suite'
+  ...
+1..16
+# tests 56
+# suites 6
+# pass 56
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 348.502834
+# start of coverage report
+# --------------------------------------------------------------------
+# file                | line % | branch % | funcs % | uncovered lines
+# --------------------------------------------------------------------
+# server.js           |  85.39 |    97.14 |   75.00 | 77-89
+# src                 |        |          |         | 
+#  domain.js          | 100.00 |    92.31 |  100.00 | 
+# tests               |        |          |         | 
+#  ceny.test.js       | 100.00 |   100.00 |  100.00 | 
+#  helpers.js         | 100.00 |   100.00 |  100.00 | 
+#  katalog.test.js    | 100.00 |   100.00 |  100.00 | 
+#  kosik.test.js      | 100.00 |   100.00 |  100.00 | 
+#  naive.test.js      | 100.00 |   100.00 |  100.00 | 
+#  rezervacie.test.js | 100.00 |   100.00 |  100.00 | 
+#  smerovanie.test.js | 100.00 |   100.00 |  100.00 | 
+#  validacia.test.js  | 100.00 |   100.00 |  100.00 | 
+# --------------------------------------------------------------------
+# all files           |  97.66 |    97.73 |   97.94 | 
+# --------------------------------------------------------------------
+# end of coverage report

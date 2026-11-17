@@ -3,7 +3,7 @@
 | Položka | Hodnota |
 |---|---|
 | **Identifikátor** | LTD-KINO-001 |
-| **Verzia** | 1.0 |
+| **Verzia** | 1.1 |
 | **Dátum** | 17. 11. 2026 |
 | **Autor** | Bc. Bohdan Lynnyk, I-API |
 | **Nadradený dokument** | Plán testov LTP-KINO-001 (`docs/02_Plan_testov.md`) |
@@ -14,7 +14,7 @@ Dokument má tri časti podľa IEEE 829:
 | Časť | Otázka | Obsah |
 |---|---|---|
 | [1. Opis návrhu testov](#1-opis-návrhu-testov) | **ČO** sa testuje a akým prístupom | funkcie, techniky, kritérium PASS/FAIL |
-| [2. Opis testovacích prípadov](#2-opis-testovacích-prípadov) | **AKO** – s akými vstupmi a výstupmi | 20 prípadov TC-01 až TC-20 |
+| [2. Opis testovacích prípadov](#2-opis-testovacích-prípadov) | **AKO** – s akými vstupmi a výstupmi | 21 prípadov TC-01 až TC-21 |
 | [3. Opis procedúr testovania](#3-opis-procedúr-testovania) | **AKÝMI KROKMI** sa prípady spúšťajú | procedúry PR-01 až PR-04 |
 
 ---
@@ -42,8 +42,8 @@ Všetky požiadavky REQ-01 až REQ-12 z `docs/00_Poziadavky.md` (rozsah a vylú�
 
 | Technika | Triedy / hranice / stavy v module | Prípady |
 |---|---|---|
-| Triedy ekvivalencie | zóna {Štandard, VIP}; kategória {dospelý, študent, dieťa}; vstup {platný, neexistujúce predstavenie, neexistujúce sedadlo, neznáma kategória, duplicita, neplatný JSON, príliš veľké telo} | TC-01, 05, 06, 19, 20 |
-| Hraničné hodnoty | počet lístkov **0 / 1 / 6 / 7**; čas **18:00** (17:59 → Do 18:00, 18:00 → Od 18:00); zóny **D8 / E1** | TC-02, 04, 09, 10 |
+| Triedy ekvivalencie | zóna {Štandard, VIP}; kategória {dospelý, študent, dieťa}; vstup {platný, neexistujúce predstavenie, neexistujúce sedadlo, neznáma kategória, vstupenka nie je objekt, duplicita, neplatný JSON, JSON nie je objekt, príliš veľké telo}; požiadavka {podporovaná metóda a cesta, nepodporovaná metóda, neznáma cesta} | TC-01, 05, 06, 19, 20, 21 |
+| Hraničné hodnoty | počet lístkov **0 / 1 / 6 / 7**; čas **18:00** (17:59 → Do 18:00, 18:00 → Od 18:00); zóny **D8 / E1**; veľkosť tela **16 384 / 16 385 B** | TC-02, 04, 09, 10, 20 |
 | Rozhodovacia tabuľka | 2 zóny × 3 kategórie = 6 pravidiel ceny | TC-05, 07, 08 |
 | Stavové prechody | sedadlo: voľné → vybrané → (zrušené \| rezervované); obsadené → odmietnuté; výber → potvrdený (nemenný) | TC-08, 11, 13, 14, 16, 18 |
 | Scenáre | dvaja klienti naraz; celý nákup v UI; kombinácia filtrov | TC-03, 15, 18 |
@@ -114,9 +114,12 @@ Požiadavka je overená, ak má aspoň jeden prípad s výsledkom PASS a žiadny
 | TC-17 | Odpoveď potvrdenia | 11 | P1 | triedy ekvivalencie | auto (API) |
 | TC-18 | Potvrdený výber je nemenný, nový výber | 11 | P1 | scenár, stavové prechody | manuálny UI |
 | TC-19 | Neexistujúce predstavenie, sedadlo, kategória | 12 | P1 | triedy ekvivalencie (neplatné) | auto (jednotkový + API) |
-| TC-20 | Duplicita, neplatný JSON, veľké telo | 12 | P1 | triedy ekvivalencie (neplatné) | auto (API) |
+| TC-20 | Duplicita, neplatný JSON, veľké telo | 12 | P1 | triedy ekvivalencie (neplatné), hraničné hodnoty | auto (API) |
+| TC-21 | Nepodporovaná metóda a cesta, hlavičky odpovedí | 12 | P1 | triedy ekvivalencie (neplatné) | auto (API) |
 
-**Spolu:** 20 prípadov, 15 × P1, 5 × P2; 11 automatických, 8 manuálnych UI, 1 kombinovaný (TC-07).
+**Spolu:** 21 prípadov, 16 × P1, 5 × P2; 12 automatických, 8 manuálnych UI, 1 kombinovaný (TC-07).
+
+TC-21 a doplnené vstupy v TC-04, TC-19 a TC-20 pribudli vo verzii 1.1 po analýze mutantov, ktoré prežili prvý cyklus (`docs/merania/po-cyklus1/`).
 
 **Spoločné predpoklady** pre všetky prípady (ak nie je uvedené inak): server v režime normal spustený podľa PR-01 s čistou fixture; predstavenie `s0-1` (21. 10. 2026, 15:00, Sála 1). **Prostredie:** Plán testov, kap. 3.2. **Závislosti:** žiadny prípad nezávisí od výsledku iného prípadu; každý sa dá vykonať samostatne po PR-01.
 
@@ -163,7 +166,7 @@ Požiadavka je overená, ak má aspoň jeden prípad s výsledkom PASS a žiadny
 | **Účel** | Overiť hranicu medzi poslednou štandardnou a prvou VIP radou a rozsah sály. |
 | **Procedúra** | PR-03 |
 | **Vstup** | `calculateQuote` s D8 / dospelý, E1 / dospelý; zoznam `SEATS` |
-| **Očakávaný výstup** | D8: zóna `standard`, 1000 centov; E1: zóna `vip`, 1500 centov; `SEATS` má 48 miest A1 … F8, rady A–D `standard`, E–F `vip` |
+| **Očakávaný výstup** | D8: zóna `standard`, 1000 centov; E1: zóna `vip`, 1500 centov; `SEATS` má 48 miest A1 … F8, rady A–D `standard`, E–F `vip`; číslo každého miesta zodpovedá jeho ID (A1 → rad A, číslo 1) |
 | **Následky** | žiadne |
 
 #### TC-05 Rozhodovacia tabuľka 6 cien
@@ -328,8 +331,8 @@ Požiadavka je overená, ak má aspoň jeden prípad s výsledkom PASS a žiadny
 | **Požiadavka / priorita** | REQ-12 · P1 |
 | **Účel** | Overiť odmietnutie neplatných hodnôt bez chyby servera. |
 | **Procedúra** | PR-03 |
-| **Vstup** | a) `sessionId` = `s9-9`; b) `seatId` = `Z9`; c) `type` = `senior`; d) `GET /api/seats/s9-9` |
-| **Očakávaný výstup** | a) 404 „Predstavenie neexistuje."; b) 400 „Sedadlo neexistuje."; c) 400 „Neplatný typ vstupenky."; d) 404; žiadna odpoveď 500; obsadenosť s0-1 nezmenená |
+| **Vstup** | a) `sessionId` = `s9-9`; b) `seatId` = `Z9`; c) `type` = `senior`; d) `GET /api/seats/s9-9`; e) vstupenka `null` namiesto objektu (aj jednotkovo: `[null]`, `["A1"]`) |
+| **Očakávaný výstup** | a) 404 `SESSION_NOT_FOUND` „Predstavenie neexistuje."; b) 400 `INVALID_INPUT` „Sedadlo neexistuje."; c) 400 `INVALID_INPUT` „Neplatný typ vstupenky."; d) 404 `SESSION_NOT_FOUND`; e) 400 `INVALID_INPUT` „Neplatná vstupenka."; žiadna odpoveď 500; obsadenosť s0-1 nezmenená |
 | **Následky** | žiadne |
 
 #### TC-20 Duplicita, neplatný JSON, veľké telo
@@ -339,8 +342,19 @@ Požiadavka je overená, ak má aspoň jeden prípad s výsledkom PASS a žiadny
 | **Požiadavka / priorita** | REQ-12 · P1 |
 | **Účel** | Overiť odmietnutie chybne zostavených požiadaviek. |
 | **Procedúra** | PR-03 |
-| **Vstup** | a) A1 dvakrát v jednej požiadavke; b) telo `{nie je json`; c) telo väčšie ako 16 384 bajtov; d) `tickets` nie je pole |
-| **Očakávaný výstup** | a) 400 „Sedadlo nemožno vybrať dvakrát."; b) 400 „Neplatný JSON."; c) 413 „Požiadavka je príliš veľká."; d) 400 „Neplatný zoznam vstupeniek."; žiadna odpoveď 500; obsadenosť nezmenená |
+| **Vstup** | a) A1 dvakrát v jednej požiadavke; b) telo `{nie je json`; c) telo väčšie ako 16 384 bajtov; d) `tickets` nie je pole; e) platné telo s veľkosťou presne 16 385 B; f) telo `[]`; g) telo `null`; h) telo `42`; i) platné telo s veľkosťou presne 16 384 B |
+| **Očakávaný výstup** | a) 400 „Sedadlo nemožno vybrať dvakrát."; b) 400 „Neplatný JSON."; c) 413 „Požiadavka je príliš veľká."; d) 400 „Neplatný zoznam vstupeniek."; e) 413 „Požiadavka je príliš veľká."; f), g), h) 400 „Neplatný JSON."; i) 201 (hranica je ešte prípustná); pri a) až h) žiadna odpoveď 500 a obsadenosť nezmenená |
+| **Následky** | pri i) je A1 v s0-1 rezervované (izolovaný server testu) |
+
+#### TC-21 Nepodporovaná metóda a cesta, hlavičky odpovedí
+
+| | |
+|---|---|
+| **Požiadavka / priorita** | REQ-12 · P1 |
+| **Účel** | Overiť, že server prijme iba podporované kombinácie metódy a cesty, ostatné odmietne bez vedľajších účinkov a odpovede majú správne hlavičky. |
+| **Procedúra** | PR-03 |
+| **Vstup** | a) `GET /api/reservations`; b) `GET /api/quote`; c) `POST /api/catalog`; d) `POST /api/seats/s0-1`; e) `DELETE /api/reservations`; f) `GET /neexistuje`; g) `POST /`; h) `GET /api/catalog/x`; i) `POST /api/seats/s0-1` s platným košíkom A1; j) `POST /api/quote` s A1; k) `GET /api/catalog`; l) `GET /`, `/styles.css`, `/app.js` |
+| **Očakávaný výstup** | a) až h) 404, JSON `{"error":"Stránka neexistuje.","code":"NOT_FOUND"}`; i), j) obsadenosť s0-1 nezmenená (j: 200); k) `Content-Type: application/json; charset=utf-8`, `Cache-Control: no-store`; l) 200, typ `text/html`, `text/css`, `text/javascript` s `charset=utf-8`, `Cache-Control: no-store`, `X-Content-Type-Options: nosniff`, neprázdny obsah, `/` začína `<!doctype html` |
 | **Následky** | žiadne |
 
 ---
@@ -370,7 +384,7 @@ Požiadavka je overená, ak má aspoň jeden prípad s výsledkom PASS a žiadny
 
 | | |
 |---|---|
-| **Účel** | Vykonať TC-01, 04, 05, 06, 07 (API), 09, 12, 15, 16, 17, 19, 20. |
+| **Účel** | Vykonať TC-01, 04, 05, 06, 07 (API), 09, 12, 15, 16, 17, 19, 20, 21. |
 | **Požiadavky** | Node.js ≥ 20; server **nemusí** bežať – každý test spúšťa vlastný server na náhodnom porte |
 | **Kroky** | 1. `npm test`. 2. Vo výstupe nájsť riadky `ok` / `not ok` s ID prípadov. 3. Pre každý TC nastaviť Výsledok testu v Project. 4. Uložiť výstup: `npm test > docs/merania/po/npm-test.txt`. 5. Pri `not ok` postupovať ako PR-02 krok 6. |
 | **Neštandardné situácie** | zlyhá viac ako polovica testov naraz → overiť verziu Node.js a `git status` (Plán testov 2.7) |
@@ -391,3 +405,4 @@ Požiadavka je overená, ak má aspoň jeden prípad s výsledkom PASS a žiadny
 | Verzia | Dátum | Zmena |
 |---|---|---|
 | 1.0 | 17. 11. 2026 | Prvá verzia: návrh, 20 testovacích prípadov, 4 procedúry |
+| 1.1 | 17. 11. 2026 | Druhý cyklus po analýze mutantov: doplnené vstupy TC-04, TC-19 (e), TC-20 (e–i), nový TC-21; 21 prípadov |

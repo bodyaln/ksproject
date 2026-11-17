@@ -25,7 +25,7 @@ Dokument opisuje, ako sa má správať modul KINO: výber predstavenia, výber s
 | REQ-09 | Zmena výberu | Zmena predstavenia alebo filtrov vymaže rozpracovaný výber. Opätovný klik na vybrané miesto alebo tlačidlo × miesto odstráni. | Po zmene predstavenia je košík 0 / 6 a suma 0,00 EUR. | P2 |
 | REQ-10 | Konflikt rezervácie | Pri potvrdení server znovu overí všetky miesta. Ak je niektoré už obsadené, vráti HTTP 409 a nerezervuje ani voľné miesta z toho istého košíka. Z dvoch klientov s rovnakým miestom uspeje iba prvý. | Dve karty s A1: prvá 201, druhá 409; pri košíku A1+A2 a obsadenom A1 zostane A2 voľné. | P1 |
 | REQ-11 | Potvrdenie | Úspešné potvrdenie vráti identifikátor rezervácie, celkovú sumu a stav bez platby („reserved-unpaid"). Potvrdený výber sa už nedá meniť; „Začať nový výber" začne nový košík. | Po potvrdení sa zobrazí ID a suma, miesta sú obsadené, sedadlá a kategórie sú neaktívne. | P1 |
-| REQ-12 | Validácia vstupov API | Neexistujúce predstavenie (404), neexistujúce sedadlo, neznáma kategória, duplicitné sedadlo, neplatný JSON a telo nad 16 kB server odmietne chybou 4xx, nie 500, a obsadenosť sa nezmení. | Každý chybný vstup vráti 4xx s textom chyby; obsadenosť zostane rovnaká. | P1 |
+| REQ-12 | Validácia vstupov API | Neexistujúce predstavenie (404), neexistujúce sedadlo, neznáma kategória, duplicitné sedadlo, neplatný JSON a telo nad 16 kB server odmietne chybou 4xx, nie 500, a obsadenosť sa nezmení. Nepodporovaná metóda alebo cesta vráti 404 „Stránka neexistuje." bez vedľajších účinkov. | Každý chybný vstup vráti 4xx s textom chyby; obsadenosť zostane rovnaká. | P1 |
 
 ## Rozhodovacia tabuľka cien (REQ-04, REQ-05)
 
@@ -63,3 +63,4 @@ Vzorec: `cena_lístka = round(základ_v_centoch × (100 − zľava) / 100)`, `sp
 | Verzia | Dátum | Zmena |
 |---|---|---|
 | 1.0 | 16. 11. 2026 | Prvé spísanie požiadaviek spätne zo zdrojového kódu. |
+| 1.1 | 17. 11. 2026 | REQ-12 spresnená o nepodporovanú metódu a cestu (zistené analýzou mutantov v 1. cykle). |
