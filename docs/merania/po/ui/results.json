@@ -1,0 +1,458 @@
+[
+  {
+    "id": "TC-02",
+    "title": "Hranica filtra 18:00",
+    "result": "PASS",
+    "checks": [
+      {
+        "step": "PR-02/2 bez DEMO bannera",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "PR-02/2 predvolené predstavenie",
+        "expected": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "2 Do 18:00 → zobrazené časy",
+        "expected": "15:00",
+        "actual": "15:00",
+        "ok": true
+      },
+      {
+        "step": "3 Od 18:00 → zobrazené časy",
+        "expected": "18:00, 19:30",
+        "actual": "18:00, 19:30",
+        "ok": true
+      },
+      {
+        "step": "následok: vybraté prvé predstavenie",
+        "expected": "Za horizontom · 21. 10. 2026 · 18:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 18:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "následok: košík prázdny",
+        "expected": "0 / 6",
+        "actual": "0 / 6",
+        "ok": true
+      }
+    ],
+    "version": "153.0.8010.12"
+  },
+  {
+    "id": "TC-03",
+    "title": "Kombinácia filtrov bez zhody",
+    "result": "PASS",
+    "checks": [
+      {
+        "step": "PR-02/2 bez DEMO bannera",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "PR-02/2 predvolené predstavenie",
+        "expected": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "3 text bez zhody",
+        "expected": "Pre zvolené filtre nie je dostupné predstavenie.",
+        "actual": "Pre zvolené filtre nie je dostupné predstavenie.",
+        "ok": true
+      },
+      {
+        "step": "3 schéma sedadiel prázdna",
+        "expected": "0",
+        "actual": "0",
+        "ok": true
+      },
+      {
+        "step": "3 súhrn",
+        "expected": "Zmeňte filtre a vyberte predstavenie.",
+        "actual": "Zmeňte filtre a vyberte predstavenie.",
+        "ok": true
+      },
+      {
+        "step": "4 zobrazené predstavenie",
+        "expected": "19:30",
+        "actual": "19:30",
+        "ok": true
+      },
+      {
+        "step": "4 súhrn",
+        "expected": "Nočná stanica · 21. 10. 2026 · 19:30 · Sála 2",
+        "actual": "Nočná stanica · 21. 10. 2026 · 19:30 · Sála 2",
+        "ok": true
+      },
+      {
+        "step": "4 schéma má 48 miest",
+        "expected": "48",
+        "actual": "48",
+        "ok": true
+      }
+    ],
+    "version": "153.0.8010.12"
+  },
+  {
+    "id": "TC-07",
+    "title": "Zmiešaný košík 28,50 € (UI časť)",
+    "result": "PASS",
+    "checks": [
+      {
+        "step": "PR-02/2 bez DEMO bannera",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "PR-02/2 predvolené predstavenie",
+        "expected": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "položka A1",
+        "expected": "10,00 €",
+        "actual": "10,00 €",
+        "ok": true
+      },
+      {
+        "step": "položka A2",
+        "expected": "8,00 €",
+        "actual": "8,00 €",
+        "ok": true
+      },
+      {
+        "step": "položka E1",
+        "expected": "10,50 €",
+        "actual": "10,50 €",
+        "ok": true
+      },
+      {
+        "step": "Spolu",
+        "expected": "28,50 €",
+        "actual": "28,50 €",
+        "ok": true
+      },
+      {
+        "step": "počítadlo",
+        "expected": "3 / 6",
+        "actual": "3 / 6",
+        "ok": true
+      }
+    ],
+    "version": "153.0.8010.12"
+  },
+  {
+    "id": "TC-08",
+    "title": "Prepočet pri zmene kategórie",
+    "result": "PASS",
+    "checks": [
+      {
+        "step": "PR-02/2 bez DEMO bannera",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "PR-02/2 predvolené predstavenie",
+        "expected": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "1 dospelý: položka / Spolu",
+        "expected": "10,00 € / 10,00 €",
+        "actual": "10,00 € / 10,00 €",
+        "ok": true
+      },
+      {
+        "step": "2 študent: položka / Spolu",
+        "expected": "8,00 € / 8,00 €",
+        "actual": "8,00 € / 8,00 €",
+        "ok": true
+      },
+      {
+        "step": "3 dieťa (nie 5,60 €): položka / Spolu",
+        "expected": "7,00 € / 7,00 €",
+        "actual": "7,00 € / 7,00 €",
+        "ok": true
+      },
+      {
+        "step": "4 dospelý: položka / Spolu",
+        "expected": "10,00 € / 10,00 €",
+        "actual": "10,00 € / 10,00 €",
+        "ok": true
+      }
+    ],
+    "version": "153.0.8010.12"
+  },
+  {
+    "id": "TC-10",
+    "title": "Siedme miesto v UI",
+    "result": "PASS",
+    "checks": [
+      {
+        "step": "PR-02/2 bez DEMO bannera",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "PR-02/2 predvolené predstavenie",
+        "expected": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "1 hlásenie pri prázdnom výbere",
+        "expected": "Vyberte aspoň 1 vstupenku.",
+        "actual": "Vyberte aspoň 1 vstupenku.",
+        "ok": true
+      },
+      {
+        "step": "2 počítadlo",
+        "expected": "6 / 6",
+        "actual": "6 / 6",
+        "ok": true
+      },
+      {
+        "step": "2 Spolu",
+        "expected": "60,00 €",
+        "actual": "60,00 €",
+        "ok": true
+      },
+      {
+        "step": "3 hlásenie",
+        "expected": "Maximálny počet vstupeniek na jedno predstavenie je 6.",
+        "actual": "Maximálny počet vstupeniek na jedno predstavenie je 6.",
+        "ok": true
+      },
+      {
+        "step": "3 A8 nepridané",
+        "expected": "false",
+        "actual": "false",
+        "ok": true
+      },
+      {
+        "step": "3 počítadlo",
+        "expected": "6 / 6",
+        "actual": "6 / 6",
+        "ok": true
+      }
+    ],
+    "version": "153.0.8010.12"
+  },
+  {
+    "id": "TC-11",
+    "title": "Klik na obsadené miesto",
+    "result": "PASS",
+    "checks": [
+      {
+        "step": "PR-02/2 bez DEMO bannera",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "PR-02/2 predvolené predstavenie",
+        "expected": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "1 obsadené miesta",
+        "expected": "A3, B6, E2, F7",
+        "actual": "A3, B6, E2, F7",
+        "ok": true
+      },
+      {
+        "step": "1 A3 vyzerá inak ako voľné A1",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "2 A3 je klikateľné (nie disabled)",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "2 hlásenie",
+        "expected": "Toto sedadlo je obsadené. Vyberte iné miesto.",
+        "actual": "Toto sedadlo je obsadené. Vyberte iné miesto.",
+        "ok": true
+      },
+      {
+        "step": "2 A3 nepridané",
+        "expected": "false",
+        "actual": "false",
+        "ok": true
+      },
+      {
+        "step": "2 počítadlo",
+        "expected": "0 / 6",
+        "actual": "0 / 6",
+        "ok": true
+      }
+    ],
+    "version": "153.0.8010.12"
+  },
+  {
+    "id": "TC-13",
+    "title": "Zmena predstavenia vymaže výber",
+    "result": "PASS",
+    "checks": [
+      {
+        "step": "PR-02/2 bez DEMO bannera",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "PR-02/2 predvolené predstavenie",
+        "expected": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "1 počítadlo pred zmenou",
+        "expected": "2 / 6",
+        "actual": "2 / 6",
+        "ok": true
+      },
+      {
+        "step": "2 počítadlo",
+        "expected": "0 / 6",
+        "actual": "0 / 6",
+        "ok": true
+      },
+      {
+        "step": "2 Spolu",
+        "expected": "0,00 €",
+        "actual": "0,00 €",
+        "ok": true
+      },
+      {
+        "step": "2 súhrn",
+        "expected": "Za horizontom · 21. 10. 2026 · 18:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 18:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "2 A1, A2 neoznačené",
+        "expected": "",
+        "actual": "",
+        "ok": true
+      }
+    ],
+    "version": "153.0.8010.12"
+  },
+  {
+    "id": "TC-14",
+    "title": "Odstránenie miesta",
+    "result": "PASS",
+    "checks": [
+      {
+        "step": "PR-02/2 bez DEMO bannera",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "PR-02/2 predvolené predstavenie",
+        "expected": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "1 Spolu",
+        "expected": "20,00 €",
+        "actual": "20,00 €",
+        "ok": true
+      },
+      {
+        "step": "2 počítadlo / Spolu",
+        "expected": "1 / 6 / 10,00 €",
+        "actual": "1 / 6 / 10,00 €",
+        "ok": true
+      },
+      {
+        "step": "3 počítadlo / Spolu",
+        "expected": "0 / 6 / 0,00 €",
+        "actual": "0 / 6 / 0,00 €",
+        "ok": true
+      }
+    ],
+    "version": "153.0.8010.12"
+  },
+  {
+    "id": "TC-18",
+    "title": "Potvrdený výber je nemenný, nový výber",
+    "result": "PASS",
+    "checks": [
+      {
+        "step": "PR-02/2 bez DEMO bannera",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "PR-02/2 predvolené predstavenie",
+        "expected": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "actual": "Za horizontom · 21. 10. 2026 · 15:00 · Sála 1",
+        "ok": true
+      },
+      {
+        "step": "2 potvrdenie (formát + UUID)",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "2 text potvrdenia",
+        "expected": "Výber je potvrdený. Spolu 20,50 €. Rezervácia ‹ID›. Platba nebola vykonaná.",
+        "actual": "Výber je potvrdený. Spolu 20,50 €. Rezervácia ‹ID›. Platba nebola vykonaná.",
+        "ok": true
+      },
+      {
+        "step": "3 klik na A2 nič nezmenil",
+        "expected": "A1, E1 / 2 / 6",
+        "actual": "A1, E1 / 2 / 6",
+        "ok": true
+      },
+      {
+        "step": "3 výber kategórie A1 neaktívny",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "3 tlačidlo × neaktívne",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      },
+      {
+        "step": "4 košík",
+        "expected": "0 / 6 / 0,00 €",
+        "actual": "0 / 6 / 0,00 €",
+        "ok": true
+      },
+      {
+        "step": "4 A1 a E1 obsadené",
+        "expected": "true",
+        "actual": "true",
+        "ok": true
+      }
+    ],
+    "version": "153.0.8010.12"
+  }
+]

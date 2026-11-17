@@ -379,6 +379,7 @@ TC-21 a doplnené vstupy v TC-04, TC-19 a TC-20 pribudli vo verzii 1.1 po analý
 | **Požiadavky** | PR-01 hotová; Google Chrome; GitHub Project otvorený v druhej karte |
 | **Kroky** | 1. **Príprava:** otvoriť `http://127.0.0.1:3000`, obnoviť stránku (Cmd+R). 2. **Začiatok:** skontrolovať, že nie je zobrazený DEMO banner a je vybrané 21. 10. 2026, 15:00 Sála 1. 3. **Vykonanie:** vykonať kroky prípadu presne v uvedenom poradí. 4. **Meranie:** porovnať každý očakávaný výstup so skutočnosťou (text hlásenia, ceny položiek, Spolu, počítadlo). 5. **Záznam:** v Project nastaviť Výsledok testu; do záznamu o testovaní zapísať RUN ID, dátum, TC, výsledok; pri FAIL urobiť snímku obrazovky. 6. **Pri FAIL:** založiť incident (issue, Typ položky = Incident, Stav incidentu = Open) s krokmi, očakávaným a skutočným výsledkom, prepojiť s TC. 7. **Ukončenie:** ak prípad niečo rezervoval (TC-18), vykonať PR-01. |
 | **Neštandardné situácie** | cena zobrazuje „…" dlhšie ako 2 s → obnoviť stránku a zopakovať; chyba „Aplikáciu sa nepodarilo načítať" → BLOCKED, PR-01 |
+| **Vykonanie skriptom** | Kroky a kontroly všetkých UI prípadov sú zapísané aj v `tests/ui/pr02-ui-run.mjs` (Chromium, Playwright). Skript spustí pre každý prípad čistý server, vykoná kroky karty a uloží `results.json` so všetkými kontrolami a snímky obrazovky: `node tests/ui/pr02-ui-run.mjs docs/merania/po/ui` (predtým `npm i -D playwright@1.63.0 && npx playwright install chromium`). |
 
 ### PR-03 Spustenie automatických testov
 
@@ -405,4 +406,4 @@ TC-21 a doplnené vstupy v TC-04, TC-19 a TC-20 pribudli vo verzii 1.1 po analý
 | Verzia | Dátum | Zmena |
 |---|---|---|
 | 1.0 | 17. 11. 2026 | Prvá verzia: návrh, 20 testovacích prípadov, 4 procedúry |
-| 1.1 | 17. 11. 2026 | Druhý cyklus po analýze mutantov: doplnené vstupy TC-04, TC-19 (e), TC-20 (e–i), nový TC-21; 21 prípadov |
+| 1.1 | 17. 11. 2026 | Druhý cyklus po analýze mutantov: doplnené vstupy TC-04, TC-19 (e), TC-20 (e–i), nový TC-21; 21 prípadov; PR-02 doplnená o vykonanie skriptom |
