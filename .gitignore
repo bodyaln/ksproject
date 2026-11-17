@@ -3,3 +3,5 @@ node_modules/
 *.zip
 coverage/
 _archive/
+reports/
+.stryker-tmp/
