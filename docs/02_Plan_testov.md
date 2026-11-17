@@ -178,24 +178,26 @@ gantt
     title Harmonogram testovania KINO
     dateFormat YYYY-MM-DD
     axisFormat %d.%m.
+    todayMarker off
     section Príprava
-    Požiadavky REQ-01–12            :done,    a1, 2026-11-16, 1d
-    Konfigurácia GitHub Project     :done,    a2, 2026-11-17, 1d
-    Meranie PRED                    :done,    a3, 2026-11-17, 1d
-    Plán testov                     :active,  a4, 2026-11-17, 1d
+    Požiadavky REQ-01–12            : a1, 2026-10-28, 3d
+    Konfigurácia GitHub Project     : a2, 2026-10-31, 3d
+    Meranie PRED                    : a3, 2026-11-03, 2d
+    Plán testov                     : a4, 2026-11-05, 3d
     section Návrh
-    Opis testov a 20 TC             :         b1, 2026-11-18, 2d
+    Opis testov a 20 TC             : b1, 2026-11-08, 4d
     section Vykonanie
-    Automatické testy               :         c1, 2026-11-19, 3d
-    Manuálne UI testy (Chrome)      :         c2, 2026-11-22, 1d
-    Incidenty, opravy, retest       :         c3, 2026-11-22, 3d
+    Automatické testy               : c1, 2026-11-12, 3d
+    Manuálne UI testy (Chrome)      : c2, 2026-11-15, 2d
+    Incidenty, opravy, retest       : c3, 2026-11-15, 3d
     section Vyhodnotenie
-    Meranie PO                      :         d1, 2026-11-25, 1d
-    Súhrnná správa, dokumentácia    :         d2, 2026-11-25, 3d
-    Prezentácia                     :         d3, 2026-11-28, 2d
+    Meranie PO                      : d1, 2026-11-17, 1d
+    Súhrnná správa, dokumentácia    : d2, 2026-11-17, 2d
+    Odovzdanie do AIS               : milestone, m1, 2026-11-18, 0d
+    Prezentácia                     : milestone, m2, 2026-11-19, 0d
 ```
 
-Termíny sú plánovacie. Konečný termín odovzdania určuje harmonogram predmetu (streda pred pridelenou prezentáciou, 23:59).
+Termíny sú plánovacie. Odovzdanie do AIS: **18. 11. 2026, 23:59**; prezentácia na cvičení: **19. 11. 2026**.
 
 ### 3.2 Prostredie
 
