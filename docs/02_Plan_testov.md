@@ -112,7 +112,7 @@ Každá požiadavka má aspoň jeden testovací prípad (TC). Testovacie prípad
 | REQ-11 | TC-17 Odpoveď potvrdenia (ID, suma, stav) · TC-18 Potvrdený výber je nemenný | stavové prechody, scenár | API, UI |
 | REQ-12 | TC-19 Neexistujúce predstavenie, sedadlo, kategória · TC-20 Duplicita, neplatný JSON, telo nad 16 kB | triedy ekvivalencie (neplatné) | jednotková, API |
 
-**Súhrn:** 12 požiadaviek, 20 testovacích prípadov (11 automatických, 7 manuálnych UI, 2 kombinované).
+**Súhrn:** 12 požiadaviek, 20 testovacích prípadov (11 automatických, 8 manuálnych UI, 1 kombinovaný). Podrobný opis: `docs/03_Opis_testov.md`.
 
 ### 2.5 Prístup
 

@@ -24,7 +24,7 @@ Dokument opisuje, ako sa má správať modul KINO: výber predstavenia, výber s
 | REQ-08 | Obsadené miesto | Obsadené miesto nemožno vybrať; kliknutie zobrazí „Toto sedadlo je obsadené. Vyberte iné miesto." Na začiatku sú obsadené A3, B6, E2, F7. Obsadenosť je samostatná pre každé predstavenie. | Klik na A3 nepridá miesto; A1 rezervované v s0-1 zostáva voľné v s0-2. | P1 |
 | REQ-09 | Zmena výberu | Zmena predstavenia alebo filtrov vymaže rozpracovaný výber. Opätovný klik na vybrané miesto alebo tlačidlo × miesto odstráni. | Po zmene predstavenia je košík 0 / 6 a suma 0,00 EUR. | P2 |
 | REQ-10 | Konflikt rezervácie | Pri potvrdení server znovu overí všetky miesta. Ak je niektoré už obsadené, vráti HTTP 409 a nerezervuje ani voľné miesta z toho istého košíka. Z dvoch klientov s rovnakým miestom uspeje iba prvý. | Dve karty s A1: prvá 201, druhá 409; pri košíku A1+A2 a obsadenom A1 zostane A2 voľné. | P1 |
-| REQ-11 | Potvrdenie | Úspešné potvrdenie vráti identifikátor rezervácie, celkovú sumu a stav bez platby („reserved-unpaid"). Potvrdený výber sa už nedá meniť; „Nový výber" začne nový košík. | Po potvrdení sa zobrazí ID a suma, miesta sú obsadené, sedadlá a kategórie sú neaktívne. | P1 |
+| REQ-11 | Potvrdenie | Úspešné potvrdenie vráti identifikátor rezervácie, celkovú sumu a stav bez platby („reserved-unpaid"). Potvrdený výber sa už nedá meniť; „Začať nový výber" začne nový košík. | Po potvrdení sa zobrazí ID a suma, miesta sú obsadené, sedadlá a kategórie sú neaktívne. | P1 |
 | REQ-12 | Validácia vstupov API | Neexistujúce predstavenie (404), neexistujúce sedadlo, neznáma kategória, duplicitné sedadlo, neplatný JSON a telo nad 16 kB server odmietne chybou 4xx, nie 500, a obsadenosť sa nezmení. | Každý chybný vstup vráti 4xx s textom chyby; obsadenosť zostane rovnaká. | P1 |
 
 ## Rozhodovacia tabuľka cien (REQ-04, REQ-05)
@@ -40,7 +40,7 @@ Vzorec: `cena_lístka = round(základ_v_centoch × (100 − zľava) / 100)`, `sp
 
 - Predstavenia: `sN-1` 15:00 Sála 1 „Za horizontom", `sN-2` 18:00 Sála 1 „Za horizontom", `sN-3` 19:30 Sála 2 „Nočná stanica"; N = 0, 1, 2 pre 21., 22., 23. 10. 2026.
 - Obsadenosť je v pamäti jedného serverového procesu; reštart servera obnoví východiskový stav (obsadené A3, B6, E2, F7).
-- Rozpracovaný výber miesto dočasne neblokuje; obsadenosť sa obnoví tlačidlom „Obnoviť" alebo zmenou predstavenia.
+- Rozpracovaný výber miesto dočasne neblokuje; obsadenosť sa obnoví tlačidlom „Obnoviť obsadenosť" alebo zmenou predstavenia.
 - Režim `npm run start:bug` zámerne porušuje REQ-05 pre VIP / dieťa (7,00 EUR namiesto 10,50 EUR). Slúži iba na nácvik zápisu incidentu a nie je prijímanou konfiguráciou.
 
 ## Zdroj v kóde
